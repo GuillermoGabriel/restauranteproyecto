@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Plato;
-use App\Models\categorias;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
 
 /**
- * Class PlatoController
+ * Class ClienteController
  * @package App\Http\Controllers
  */
-class PlatoController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +18,10 @@ class PlatoController extends Controller
      */
     public function index()
     {
-        $plato = Plato::paginate();
+        $clientes = Cliente::paginate();
 
-        return view('plato.index', compact('plato'))
-            ->with('i', (request()->input('page', 1) - 1) * $plato->perPage());
+        return view('cliente.index', compact('clientes'))
+            ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
     }
 
     /**
@@ -32,9 +31,8 @@ class PlatoController extends Controller
      */
     public function create()
     {
-        $plato = new Plato();
-        $categorias=categorias::pluck('ca_categoria','id');
-        return view('plato.create', compact('plato','categorias'));
+        $cliente = new Cliente();
+        return view('cliente.create', compact('cliente'));
     }
 
     /**
@@ -45,12 +43,12 @@ class PlatoController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Plato::$rules);
+        request()->validate(Cliente::$rules);
 
-        $plato = Plato::create($request->all());
+        $cliente = Cliente::create($request->all());
 
-        return redirect()->route('plato.index')
-            ->with('success', 'Plato created successfully.');
+        return redirect()->route('cliente.index')
+            ->with('success', 'Cliente created successfully.');
     }
 
     /**
@@ -61,9 +59,9 @@ class PlatoController extends Controller
      */
     public function show($id)
     {
-        $plato = Plato::find($id);
+        $cliente = Cliente::find($id);
 
-        return view('plato.show', compact('plato'));
+        return view('cliente.show', compact('cliente'));
     }
 
     /**
@@ -74,27 +72,26 @@ class PlatoController extends Controller
      */
     public function edit($id)
     {
-        $plato = Plato::find($id);
-        $categorias=categorias::pluck('ca_categoria','id');
+        $cliente = Cliente::find($id);
 
-        return view('plato.edit', compact('plato','categorias'));
+        return view('cliente.edit', compact('cliente'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Plato $plato
+     * @param  Cliente $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Plato $plato)
+    public function update(Request $request, Cliente $cliente)
     {
-        request()->validate(Plato::$rules);
+        request()->validate(Cliente::$rules);
 
-        $plato->update($request->all());
+        $cliente->update($request->all());
 
-        return redirect()->route('plato.index')
-            ->with('success', 'Plato updated successfully');
+        return redirect()->route('cliente.index')
+            ->with('success', 'Cliente updated successfully');
     }
 
     /**
@@ -104,9 +101,9 @@ class PlatoController extends Controller
      */
     public function destroy($id)
     {
-        $plato = Plato::find($id)->delete();
+        $cliente = Cliente::find($id)->delete();
 
-        return redirect()->route('plato.index')
-            ->with('success', 'Plato eliminado ');
+        return redirect()->route('cliente.index')
+            ->with('success', 'Cliente deleted successfully');
     }
 }

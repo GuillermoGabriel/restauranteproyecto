@@ -18,7 +18,7 @@ class CategoriasController extends Controller
     public function index()
     {
         //
-        $datos['categorias']=categorias::paginate(5);
+        $datos['categorias']=categorias::paginate(9);
         return view('categorias.index',$datos);
     }
 
@@ -33,27 +33,9 @@ class CategoriasController extends Controller
         return view('categorias.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-
-        //$campos=[
-         //   'ccategoria'=>'required|string|max:100',
-         //   'estado'=>'required|string|max:100',
-          //  'foto'=>'required|max:10000||mimes:jpeg,png,jpg',
-       // ];
-
-       // $mensaje=[
-       //     'required'=>'EL :attribute es requerido',
-      //      'foto.required'=>'La foto requerida'
-       // ];
-
-       // $this->validate($request,$campos,$mensaje);
 
         $datoscategorias=request()->except('_token');
         if($request->hasfile('foto')){
@@ -68,23 +50,14 @@ class CategoriasController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\categorias  $categorias
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(categorias $categorias)
     {
-        //
+        ///**
+   
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\categorias  $categorias
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         //

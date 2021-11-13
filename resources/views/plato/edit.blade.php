@@ -13,10 +13,10 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Plato</span>
+                        <span class="card-title">Actualizar Plato</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('platos.update', $plato->id) }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('plato.update', $plato->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 

@@ -33,16 +33,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
+                    <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('categorias.index') }}">{{ __('categorias') }}</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="{{ route('plato.index') }}">{{ __('plato') }}</a>
                         </li>
-                    
-
+                        
                     </ul>
-
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -54,7 +53,7 @@
                                 </li>
                             @endif
 
-                            @if (Route::has('Registro'))
+                            @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Plato
+    Cliente
 @endsection
 
 @section('content')
@@ -13,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Plato') }}
+                                {{ __('Cliente') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('plato.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('crear nuevo registro') }}
+                                <a href="{{ route('cliente.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Create New') }}
                                 </a>
                               </div>
                         </div>
@@ -36,32 +36,35 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Categoria</th>
-										<th>Nom Plato</th>
-										<th>Precio</th>
+										<th>Nombre Cli</th>
+										<th>Apellidopaterno Cli</th>
+										<th>Apellidomaterno Cli</th>
+										<th>Correo Cli</th>
+										<th>Celular Cli</th>
+										<th>Direccion Cli</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($plato as $plato)
+                                    @foreach ($cliente as $cliente)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{$plato->categoria_id}}
-
-
-                                            </td>
-											<td>{{ $plato->nom_plato }}</td>
-											<td>{{ $plato->precio }}</td>
+											<td>{{ $cliente->nombre_cli }}</td>
+											<td>{{ $cliente->apellidopaterno_cli }}</td>
+											<td>{{ $cliente->apellidomaterno_cli }}</td>
+											<td>{{ $cliente->correo_cli }}</td>
+											<td>{{ $cliente->celular_cli }}</td>
+											<td>{{ $cliente->direccion_cli }}</td>
 
                                             <td>
-                                                <form action="{{ route('plato.destroy',$plato->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('plato.show',$plato->id) }}"><i class="fa fa-fw fa-eye"></i> Descripcion</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('plato.edit',$plato->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                <form action="{{ route('cliente.destroy',$cliente->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('cliente.show',$cliente->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('cliente.edit',$cliente->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> eliminar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -71,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                
+              
             </div>
         </div>
     </div>

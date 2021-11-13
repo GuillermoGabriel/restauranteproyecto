@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\CategoriasController;
 use App\http\Controllers\PlatoController;
+//use App\http\Controllers\ClienteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +18,7 @@ Auth::routes();
 
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('auth.register');
 });
 
 
@@ -28,9 +29,12 @@ Route::get('/', function () {
 route::resource('categorias',CategoriasController::class)->middleware('auth');
 //route::get('plato/create',[PlatoController::class,'create']);
 route::resource('plato',PlatoController::class)->middleware('auth');
+
+//route::resource('plato',ClienteController::class)->middleware('auth');
+
 //Route::resource('plato', App\Http\Controllers\PlatoController::class);
 
-Auth::routes(['register'=>false,'reset'=>false]);
+//Auth::routes(['register'=>true,'reset'=>true]);
 
 Route::get('/home', [CategoriasController::class, 'index'])->name('home');
 
@@ -40,3 +44,8 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/', [CategoriasController::class, 'index'])->name('home');
 });
 //route::get('plato/create',[PlatoController::class,'create']);
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
